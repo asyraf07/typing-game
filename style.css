@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
 body {
@@ -32,15 +33,6 @@ input {
   font-weight: 700;
   border: none;
   outline: none;
-}
-
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 1.5em;
-  }
-  input {
-    padding: 18px 10px;
-  }
 }
 
 .input {
@@ -132,4 +124,25 @@ button:hover {
   padding: 10px;
   background-color: lightseagreen;
   border-radius: 20px;
+}
+
+footer {
+  position: fixed;
+  width: 99%;
+  bottom: 2%;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  #container {
+    padding: 0px 10px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  input {
+    padding: 18px 10px;
+  }
 }
