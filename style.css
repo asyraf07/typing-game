@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid red; */
 }
 
 body {
@@ -21,11 +20,11 @@ h1 {
   border-radius: 10px;
   padding: 10px;
   color: lightseagreen;
-  /* font-size: 10px; */
 }
 
 input {
   height: 2vmax;
+  width: 100%;
   border-radius: 7px;
   padding: 10px 10px;
   color: lightseagreen;
@@ -35,13 +34,25 @@ input {
   outline: none;
 }
 
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  input {
+    padding: 18px 10px;
+  }
+}
+
 .input {
   display: flex;
+  width: 100%;
   flex-direction: column;
 }
 
 textarea {
   border-radius: 7px;
+  outline: none;
+  border: none;
   padding: 10px 10px;
   color: lightseagreen;
   font-size: 1.3rem;
@@ -93,7 +104,7 @@ button:hover {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 25px;
   background-color: lightseagreen;
   border-radius: 20px;
 }
