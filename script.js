@@ -107,7 +107,7 @@ const endGame = () => {
     containerScore.style.display = 'flex';
 }
 
-document.addEventListener("keyup", (e) => {
+containerMenu.addEventListener("keyup", (e) => {
     if (e.keyCode == 13) {
         startGame();
     }   
