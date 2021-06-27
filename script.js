@@ -7,12 +7,6 @@ const timer = document.getElementById('timer');
 const timeInput = document.getElementById('time');
 const textLengthInput = document.getElementById('text-length');
 
-// const getRandomWordFromAPI = async () => {
-//     const response = await fetch('https://api.quotable.io/random?minLength=10&maxLength=200&tags=famous-quotes');
-//     const json = await response.json();
-//     return json.content;
-// }
-
 const getRandomWord = async () => {
     const response = await fetch('./dictionary.json');
     const json = await response.json();
@@ -40,42 +34,42 @@ const displayWord = async () => {
         span.innerHTML = char;
         wordDisplay.appendChild(span);
     })
-    // wordDisplay.innerHTML = word;
-    // wordInput.value = word;
 }
 
 wordInput.addEventListener('input', () => {
     const arrayQuote = wordDisplay.querySelectorAll('span')
     const arrayValue = wordInput.value.split('')
-  
-    let correct = true
+
     arrayQuote.forEach((characterSpan, index) => {
       const character = arrayValue[index]
       if (character == null) {
         characterSpan.classList.remove('correct')
         characterSpan.classList.remove('incorrect')
-        correct = false
       } else if (character === characterSpan.innerText) {
         characterSpan.classList.add('correct')
         characterSpan.classList.remove('incorrect')
       } else {
         characterSpan.classList.remove('correct')
         characterSpan.classList.add('incorrect')
-        correct = false
       }
     })
   
     if (arrayQuote.length-1 === arrayValue.length) {
-        addPoint();
+        addScore();
     };
 })
 
 let score = 0;
-const addPoint = () => {
+const addScore = () => {
     const correctPoint = wordDisplay.querySelectorAll('span.correct').length;
     score += correctPoint
     scoreDisplay.innerHTML = score;
     displayWord();
+}
+
+const resetScore = () => {
+    score = 0;
+    scoreDisplay.innerHTML = score;
 }
 
 const menu = () => {
@@ -87,6 +81,8 @@ const menu = () => {
 const startGame = () => {
     document.getElementById('container-game').style.display = 'flex';
     document.getElementById('container-menu').style.display = 'none';
+    displayWord();
+    resetScore();
     let time = timeInput.value;
     timer.innerHTML = time;
     const startTimer = setInterval(() => {
@@ -99,10 +95,8 @@ const startGame = () => {
 }
 
 const endGame = () => {
-    addPoint();
+    addScore();
     document.getElementById('score').innerHTML = score;
     document.getElementById('container-game').style.display = 'none';
     document.getElementById('container-score').style.display = 'flex';
 }
-
-displayWord();

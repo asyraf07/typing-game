@@ -100,6 +100,7 @@ button:hover {
 
 #container-game {
   min-height: 300px;
+  max-width: 700px;
   display: none;
   /* display: flex; */
   justify-content: space-around;
