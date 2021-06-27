@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="container-menu">
+            <h1>Welcome to Typing Game</h1>
+            <div class="input">
+                <label for="time">TIME : </label>
+                <input type="number" name="time" id="time" value="60">
+            </div>
+            <div class="input">
+                <label for="text-length">TEXT LENGTH : </label>
+                <input type="number" name="text-length" id="text-length" value="3">
+            </div>
+            <button style="font-weight:700;" onclick="startGame()">CLICK HERE TO START!</button>
+        </div>
+
+        <div id="container-game">
+            <div id="timer-container">Timer :<span id="timer"></span></div>
+            <div id="word-display"></div>
+            <textarea name="yes" id="word-input"></textarea>
+            <div>Score : <span id="score-display">0</span></div>
+        </div>
+
+        <div id="container-score">
+            <h1>Score : <span id="score"></span></h1>
+            <button onclick="menu()">Main Menu</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
