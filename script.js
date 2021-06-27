@@ -79,10 +79,11 @@ const menu = () => {
 }
 
 const startGame = () => {
-    document.getElementById('container-game').style.display = 'flex';
     document.getElementById('container-menu').style.display = 'none';
-    displayWord();
     resetScore();
+    displayWord();
+    document.getElementById('container-game').style.display = 'flex';
+    wordInput.focus();
     let time = timeInput.value;
     timer.innerHTML = time;
     const startTimer = setInterval(() => {
@@ -100,3 +101,9 @@ const endGame = () => {
     document.getElementById('container-game').style.display = 'none';
     document.getElementById('container-score').style.display = 'flex';
 }
+
+document.addEventListener("keyup", (e) => {
+    if (e.keyCode == 13) {
+        startGame();
+    }   
+})
