@@ -1,4 +1,9 @@
 const container = document.getElementById('container');
+
+const containerGame = document.getElementById('container-game');
+const containerScore = document.getElementById('container-score');
+const containerMenu = document.getElementById('container-menu');
+
 const wordDisplay = document.getElementById('word-display');
 const wordInput = document.getElementById('word-input');
 const scoreDisplay = document.getElementById('score-display');
@@ -28,8 +33,8 @@ const displayWord = async () => {
     wordDisplay.innerHTML = '';
     wordInput.value = '';
     const word = await getRandomWord();
-    const arrayWord = word.split('');
-    arrayWord.forEach((char, i) => {
+    const arrayChar = word.split('');
+    arrayChar.forEach((char) => {
         const span = document.createElement('span');
         span.innerHTML = char;
         wordDisplay.appendChild(span);
@@ -37,11 +42,11 @@ const displayWord = async () => {
 }
 
 wordInput.addEventListener('input', () => {
-    const arrayQuote = wordDisplay.querySelectorAll('span')
+    const arrayWord = wordDisplay.querySelectorAll('span')
     const arrayValue = wordInput.value.split('')
 
-    arrayQuote.forEach((characterSpan, index) => {
-      const character = arrayValue[index]
+    arrayWord.forEach((characterSpan, i) => {
+      const character = arrayValue[i]
       if (character == null) {
         characterSpan.classList.remove('correct')
         characterSpan.classList.remove('incorrect')
@@ -54,7 +59,7 @@ wordInput.addEventListener('input', () => {
       }
     })
   
-    if (arrayQuote.length-1 === arrayValue.length) {
+    if (arrayWord.length-1 === arrayValue.length) {
         addScore();
     };
 })
@@ -73,16 +78,16 @@ const resetScore = () => {
 }
 
 const menu = () => {
-    document.getElementById('container-game').style.display = 'none';
-    document.getElementById('container-score').style.display = 'none';
-    document.getElementById('container-menu').style.display = 'flex';
+    containerGame.style.display = 'none';
+    containerScore.style.display = 'none';
+    containerMenu.style.display = 'flex';
 }
 
 const startGame = () => {
-    document.getElementById('container-menu').style.display = 'none';
+    containerMenu.style.display = 'none';
     resetScore();
     displayWord();
-    document.getElementById('container-game').style.display = 'flex';
+    containerGame.style.display = 'flex';
     wordInput.focus();
     let time = timeInput.value;
     timer.innerHTML = time;
@@ -98,8 +103,8 @@ const startGame = () => {
 const endGame = () => {
     addScore();
     document.getElementById('score').innerHTML = score;
-    document.getElementById('container-game').style.display = 'none';
-    document.getElementById('container-score').style.display = 'flex';
+    containerGame.style.display = 'none';
+    containerScore.style.display = 'flex';
 }
 
 document.addEventListener("keyup", (e) => {
